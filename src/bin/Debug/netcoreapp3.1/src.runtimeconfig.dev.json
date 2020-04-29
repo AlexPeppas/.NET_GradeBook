@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\apeppas\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\apeppas\\.nuget\\packages"
+    ]
+  }
+}
