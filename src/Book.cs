@@ -4,13 +4,20 @@ namespace gradeBook
 {
     public class Book
     {
-        public Book (string name) 
+        public Book (string nameValue) 
         {
-            this.name = name;
+            Name = nameValue;
             grades = new List<double>();
+                   
         }
         public void addGrades (double grade){
+           if (grade <= 100.0)
+           {
             grades.Add(grade);
+           }
+           else{
+               throw new ArgumentException($"Invalid grade : {grade}");
+           }
         }
         public Statistics GetStats (){ 
             var result = new Statistics();
@@ -29,9 +36,27 @@ namespace gradeBook
             }
             result.average /= grades.Count;
             
+            switch (result.average){
+                case var d when d>=90.0 :
+                    result.letter = 'A';
+                    break;
+                case var d when d>=80.0:
+                    result.letter = 'B';
+                    break;
+                case var d when d>=70.0:
+                    result.letter = 'C';
+                    break;
+                default :
+                    result.letter = 'F';
+                    break;        
+            }
             return result;
         }
         private List<double> grades;
-        private string name;
+        public string Name{
+            get;
+            private set;    
+        }
+        public readonly string category = "Science";
     }
 }
